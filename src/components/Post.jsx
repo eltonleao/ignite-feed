@@ -32,7 +32,9 @@ export function Post() {
         <p>
           <a href="#">mail@mail.com</a>
         </p>
-        <p>#lorem #ipsum #dolor</p>
+        <p>
+          <a href="#">#lorem</a> <a href="#">#lorem</a> <a href="#">#lorem</a>{" "}
+        </p>
       </div>
     </article>
   );
