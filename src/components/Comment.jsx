@@ -15,7 +15,7 @@ export function Comment() {
             </div>
 
             <button title="Deletar comentário">
-              <Trash size={16} />
+              <Trash size={24} />
             </button>
           </header>
           <p>
@@ -25,7 +25,7 @@ export function Comment() {
         </div>
         <footer>
           <button>
-            <ThumbsUp size={16} />
+            <ThumbsUp />
             Aplaudir <span>20</span>
           </button>
         </footer>
