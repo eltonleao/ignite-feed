@@ -1,38 +1,45 @@
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
+import { ptBR } from "date-fns/locale";
+import { format, formatDistanceToNow } from "date-fns";
 
-export function Post(props) {
+export function Post({ author, publishedAt, content }) {
+  const publishedAtString = format(publishedAt, "dd MMM yyyy 'às' HH:mm:ss");
+  const publishedAtRelativeString = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
   return (
     <article className={`${styles.post}`}>
       <header>
         <div className={`${styles.author}`}>
-          <Avatar src="https://picsum.photos/200" />
+          <Avatar src={author.avatarURL} />
           <div className={`${styles.authorInfo}`}>
-            <strong>Lorem Ipsum</strong>
-            <span>App Developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
 
-        <time
-          title="01 de janeiro de 2024 às 08:00:00"
-          dateTime="2024-01-01 08:00:00"
-        >
-          Publicado há 1h
+        <time title={publishedAtString} dateTime={publishedAtString}>
+          {publishedAtRelativeString}
         </time>
       </header>
 
       <div className={`${styles.content}`}>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium,
-          nulla!
-        </p>
-        <p>
-          <a href="#">mail@mail.com</a>
-        </p>
-        <p>
-          <a href="#">#lorem</a> <a href="#">#lorem</a> <a href="#">#lorem</a>{" "}
-        </p>
+        {content.map((line) => {
+          if (line.type === "paragraph") {
+            return <p>{line.content}</p>;
+          }
+
+          if (line.type === "link") {
+            return (
+              <a target="_blank" href={line.content}>
+                {line.content}
+              </a>
+            );
+          }
+        })}
       </div>
 
       <form className={`${styles.commentForm}`}>
