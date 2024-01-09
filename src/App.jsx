@@ -9,8 +9,8 @@ const posts = [
   {
     id: 1,
     author: {
-      avatar: "https://picsum.photos/200",
-      name: "Lorem Ipsum",
+      avatarURL: "https://picsum.photos/200",
+      name: "Lorem Ipsum #1",
       role: "App Developer",
     },
     content: [
@@ -29,13 +29,13 @@ const posts = [
         content: "https://google.com",
       },
     ],
-    publishedAt: new Date("2021-01-01 12:00:00"),
+    publishedAt: new Date("2024-01-01 12:00:00"),
   },
   {
     id: 1,
     author: {
-      avatar: "https://picsum.photos/200",
-      name: "Lorem Ipsum",
+      avatarURL: "https://picsum.photos/300",
+      name: "Lorem Ipsum #2",
       role: "App Developer",
     },
     content: [
@@ -54,7 +54,7 @@ const posts = [
         content: "https://google.com",
       },
     ],
-    publishedAt: new Date("2021-01-01 12:00:00"),
+    publishedAt: new Date("2024-01-01 12:00:00"),
   },
 ];
 
