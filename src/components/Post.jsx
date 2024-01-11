@@ -27,8 +27,17 @@ export function Post({ author, publishedAt, content }) {
   }
 
   function handleNewCommentChange(event) {
+    event.target.setCustomValidity("");
     setNewCommentText(event.target.value);
   }
+
+  function handleNewCommentInvalid(event) {
+    event.target.setCustomValidity(
+      "Oops, você esqueceu de escrever o comentário!"
+    );
+  }
+
+  const isNewCommentEmpty = newCommentText.length === 0;
 
   return (
     <article className={`${styles.post}`}>
@@ -69,13 +78,17 @@ export function Post({ author, publishedAt, content }) {
         <strong>Deixe seu feedback</strong>
 
         <textarea
+          required
+          onInvalid={handleNewCommentInvalid}
           onChange={handleNewCommentChange}
           value={newCommentText}
           name="comment"
           placeholder="Deixe um comentário"
         />
         <footer>
-          <button type="submit">Publicar</button>
+          <button disabled={isNewCommentEmpty} type="submit">
+            Publicar
+          </button>
         </footer>
       </form>
 
