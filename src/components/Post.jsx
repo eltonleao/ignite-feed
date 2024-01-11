@@ -16,6 +16,10 @@ export function Post({ author, publishedAt, content }) {
     addSuffix: true,
   });
 
+  function deleteComment(comment) {
+    console.log(comment);
+  }
+
   function handleCreateNewComment(event) {
     event.preventDefault();
     setComments([...comments, newCommentText]);
@@ -77,7 +81,7 @@ export function Post({ author, publishedAt, content }) {
 
       <div className={`${styles.commentList}`}>
         {comments.map((comment) => {
-          return <Comment content={comment} />;
+          return <Comment content={comment} deleteComment={deleteComment} />;
         })}
       </div>
     </article>
