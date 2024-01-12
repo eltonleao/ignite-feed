@@ -17,7 +17,8 @@ export function Post({ author, publishedAt, content }) {
   });
 
   function deleteComment(comment) {
-    console.log(comment);
+    const commentsWithoutDeleted = comments.filter((c) => c !== comment);
+    setComments(commentsWithoutDeleted);
   }
 
   function handleCreateNewComment(event) {
